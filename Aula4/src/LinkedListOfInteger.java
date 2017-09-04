@@ -77,6 +77,67 @@ public class LinkedListOfInteger {
         }
         count++;
     }
+    
+    public void addIncreasingOrder(Integer element){ // 1 - (errado)
+      if(head == null){
+                       add(0,element);
+
+        } else{ 
+            Node aux = head;
+            Node n = new Node(element);
+
+            while(element < aux.element){
+                if (aux.next == null) {
+                  n.next = aux;
+                  head = n;
+                  break;
+                }else{
+                    aux = aux.next;
+                            }
+            }
+            n.next = aux.next;
+            aux.next = n;
+        }
+        
+    }
+    
+    public void imprimeInvertido(){ //2
+        for (int i = count-1; i > -1; i--){
+            System.out.println(get(i));
+          
+        }
+    }
+    
+      public void imprimeInvertidoRecursivo(int i){ //3
+          
+          if(i > 0){
+              i = i -1;
+                       System.out.println(get(i));
+
+            imprimeInvertidoRecursivo(i);
+        
+    }
+      }
+      
+      public int qtdLista(){
+          return count;
+      }
+      
+
+      
+      public void  reverse() { // 4
+    if (head != null) {
+        Node prev = null;
+        while (head.next != null) {
+            Node next = head.next;
+            head.next = prev;
+            prev = head;
+            head = next;
+        }
+        head.next = prev;
+    }
+}
+
 
     /**
      * Retorna o elemento de uma determinada posicao da lista
