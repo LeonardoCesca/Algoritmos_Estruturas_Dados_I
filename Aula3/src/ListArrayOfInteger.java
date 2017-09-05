@@ -8,7 +8,7 @@ public class ListArrayOfInteger {
 	private int count;
 
 	/**
-	 * Construtor da lista
+	  Construtor da lista
 	 */
 	public ListArrayOfInteger() {
 		this(INITIAL_SIZE);
