@@ -78,27 +78,40 @@ public class LinkedListOfInteger {
         count++;
     }
     
-    public void addIncreasingOrder(Integer element){ // 1 - (errado)
-      if(head == null){
-                       add(0,element);
-
-        } else{ 
-            Node aux = head;
-            Node n = new Node(element);
-
-            while(element < aux.element){
-                if (aux.next == null) {
-                  n.next = aux;
-                  head = n;
-                  break;
-                }else{
-                    aux = aux.next;
-                            }
-            }
-            n.next = aux.next;
-            aux.next = n;
-        }
-        
+    public void addIncreasingOrder(Integer element){ 
+		Node ant = null;
+		Node aux = head;
+		Node n = new Node(element);
+		// lista vazia
+		if(head == null){
+			add(0,element);
+			return;
+        } 
+		//inserir no comeco 
+		if(n.element < head.element){
+			head = n;
+			head.next = aux;
+			count++;
+			return;
+		}
+		//inserir no fim 
+		if(n.element > tail.element){
+			tail.next = n;
+			tail= n;
+			count++;
+			return;
+		}
+		
+		//inserir no meio
+		for(int i = 0; i < count ; i++){
+			if(n.element < aux.element){
+				ant.next = n;
+				ant.next.next = aux ;
+				break;
+			}
+			ant = aux;
+			aux = aux.next;
+		}
     }
     
     public void imprimeInvertido(){ //2
@@ -108,35 +121,35 @@ public class LinkedListOfInteger {
         }
     }
     
-      public void imprimeInvertidoRecursivo(int i){ //3
+	public void imprimeInvertidoRecursivo(int i){ //3
           
-          if(i > 0){
-              i = i -1;
-                       System.out.println(get(i));
+		if(i > 0){
+			i = i -1;
+			System.out.println(get(i));
 
             imprimeInvertidoRecursivo(i);
         
-    }
-      }
+		}
+	}
       
-      public int qtdLista(){
-          return count;
-      }
+	public int qtdLista(){
+		return count;
+	}
       
 
       
-      public void  reverse() { // 4
-    if (head != null) {
-        Node prev = null;
-        while (head.next != null) {
-            Node next = head.next;
-            head.next = prev;
-            prev = head;
-            head = next;
-        }
-        head.next = prev;
-    }
-}
+	public void  reverse() { // 4
+		if (head != null) {
+			Node prev = null;
+			while (head.next != null) {
+				Node next = head.next;
+				head.next = prev;
+				prev = head;
+				head = next;
+			}
+			head.next = prev;
+		}
+	}
 
 
     /**
@@ -268,9 +281,9 @@ public class LinkedListOfInteger {
         Node aux = head;
         if (index == 0) {
             if (tail == head) // se tiver apenas um elemento
-            {
-                tail = null;
-            }
+				{
+					tail = null;
+				}
             head = head.next;
             count--;
             return aux.element;
