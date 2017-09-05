@@ -77,7 +77,7 @@ public class LinkedListOfInteger {
         }
         count++;
     }
-<<<<<<< HEAD
+
 
     public void addIncreasingOrder(Integer element) { // 1
         Node ant = null;
@@ -113,7 +113,7 @@ public class LinkedListOfInteger {
             ant = aux;
             aux = aux.next;
         }
-=======
+
     
     public void addIncreasingOrder(Integer element){ 
 		Node ant = null;
@@ -149,7 +149,7 @@ public class LinkedListOfInteger {
 			ant = aux;
 			aux = aux.next;
 		}
->>>>>>> 1dc974ed21f07ec488b587978a6bad6acd7fa488
+
     }
 
     public void imprimeInvertido() { //2
@@ -158,7 +158,7 @@ public class LinkedListOfInteger {
 
         }
     }
-<<<<<<< HEAD
+
 
     public void imprimeInvertidoRecursivo(int i) { //3
 
@@ -187,7 +187,7 @@ public class LinkedListOfInteger {
             head.next = prev;
         }
     }
-=======
+
     
 	public void imprimeInvertidoRecursivo(int i){ //3
           
@@ -218,9 +218,8 @@ public class LinkedListOfInteger {
 			head.next = prev;
 		}
 	}
->>>>>>> 1dc974ed21f07ec488b587978a6bad6acd7fa488
 
-    public void unique(int element) {
+    public void unique(int element) { //5
         Node aux = head;
         Node ant = null;
         if (head.element == element) { //primeiro elemento
