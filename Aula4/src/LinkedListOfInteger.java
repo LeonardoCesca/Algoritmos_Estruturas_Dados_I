@@ -77,67 +77,97 @@ public class LinkedListOfInteger {
         }
         count++;
     }
-    
-    public void addIncreasingOrder(Integer element){ // 1 - (errado)
-      if(head == null){
-                       add(0,element);
 
-        } else{ 
-            Node aux = head;
-            Node n = new Node(element);
+    public void addIncreasingOrder(Integer element) { // 1
+        Node ant = null;
+        Node aux = head;
+        Node n = new Node(element);
+        // lista vazia
+        if (head == null) {
+            add(0, element);
+            return;
+        }
+        //inserir no comeco 
+        if (n.element < head.element) {
+            head = n;
+            head.next = aux;
+            count++;
+            return;
+        }
+        //inserir no fim 
+        if (n.element > tail.element) {
+            tail.next = n;
+            tail = n;
+            count++;
+            return;
+        }
 
-            while(element < aux.element){
-                if (aux.next == null) {
-                  n.next = aux;
-                  head = n;
-                  break;
-                }else{
-                    aux = aux.next;
-                            }
+        //inserir no meio
+        for (int i = 0; i < count; i++) {
+            if (n.element < aux.element) {
+                ant.next = n;
+                ant.next.next = aux;
+                break;
             }
-            n.next = aux.next;
-            aux.next = n;
+            ant = aux;
+            aux = aux.next;
         }
-        
     }
-    
-    public void imprimeInvertido(){ //2
-        for (int i = count-1; i > -1; i--){
+
+    public void imprimeInvertido() { //2
+        for (int i = count - 1; i > -1; i--) {
             System.out.println(get(i));
-          
+
         }
     }
-    
-      public void imprimeInvertidoRecursivo(int i){ //3
-          
-          if(i > 0){
-              i = i -1;
-                       System.out.println(get(i));
+
+    public void imprimeInvertidoRecursivo(int i) { //3
+
+        if (i > 0) {
+            i = i - 1;
+            System.out.println(get(i));
 
             imprimeInvertidoRecursivo(i);
-        
-    }
-      }
-      
-      public int qtdLista(){
-          return count;
-      }
-      
 
-      
-      public void  reverse() { // 4
-    if (head != null) {
-        Node prev = null;
-        while (head.next != null) {
-            Node next = head.next;
-            head.next = prev;
-            prev = head;
-            head = next;
         }
-        head.next = prev;
     }
-}
 
+    public int qtdLista() {
+        return count;
+    }
+
+    public void reverse() { // 4
+        if (head != null) {
+            Node prev = null;
+            while (head.next != null) {
+                Node next = head.next;
+                head.next = prev;
+                prev = head;
+                head = next;
+            }
+            head.next = prev;
+        }
+    }
+
+    public void unique(int element) {
+        Node aux = head;
+        Node ant = null;
+        if (head.element == element) { //primeiro elemento
+            head = head.next;
+        } else {
+            while (aux != null && aux.element != element) {
+                ant = aux;
+                aux = aux.next;
+            }
+            if (aux != null) {
+                ant.next = aux.next;
+            }
+            if (aux == tail) {
+                tail = ant;
+            }
+        }
+
+    }
 
     /**
      * Retorna o elemento de uma determinada posicao da lista
