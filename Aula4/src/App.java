@@ -2,7 +2,6 @@ public class App {
 
     public static void main(String[] args) {
         LinkedListOfInteger l = new LinkedListOfInteger();
-<<<<<<< HEAD
 
         l.add(32);
         l.add(15);
@@ -24,7 +23,7 @@ public class App {
        // l.imprimeInvertidoR(l.qtdLista());
            
          */
-=======
+
         l.addIncreasingOrder(10);
         l.addIncreasingOrder(5);
         l.addIncreasingOrder(30);
@@ -33,6 +32,5 @@ public class App {
 		System.out.println("====================");
 		System.out.println("LISTA");
 		System.out.println(l);
->>>>>>> 1dc974ed21f07ec488b587978a6bad6acd7fa488
     }
 }
