@@ -8,7 +8,13 @@ public class App {
         l.add(10);
         l.add(35);
         l.add(35);
-        l.unique(35);
+        //l.removeByIndex(1);
+       /* if (l.findNodo(l.) == true)
+          System.out.println("Excluiu");
+        else
+          System.out.println("Não excluiu");
+          */
+       l.unique();
         System.out.println(l);
 
         /*
@@ -24,13 +30,5 @@ public class App {
            
          */
 
-        l.addIncreasingOrder(10);
-        l.addIncreasingOrder(5);
-        l.addIncreasingOrder(30);
-        l.addIncreasingOrder(20);
-        l.addIncreasingOrder(7);
-		System.out.println("====================");
-		System.out.println("LISTA");
-		System.out.println(l);
     }
 }

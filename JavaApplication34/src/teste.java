@@ -1,6 +1,15 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 
-public class LinkedListOfInteger {
-
+/**
+ *
+ * @author Leonardo Cesca
+ */
+public class teste {
+    
     // Classe interna Node
     private class Node {
 
@@ -23,7 +32,7 @@ public class LinkedListOfInteger {
     /**
      * Construtor da lista
      */
-    public LinkedListOfInteger() {
+    public teste() {
         head = null;
         tail = null;
         count = 0;
@@ -113,6 +122,9 @@ public class LinkedListOfInteger {
             aux = aux.next;
         }
     }
+    
+
+    
 
     public void imprimeInvertido() { //2
         for (int i = count - 1; i > -1; i--) {
@@ -147,6 +159,26 @@ public class LinkedListOfInteger {
             }
             head.next = prev;
         }
+    }
+
+    public void unique(int element) { //5
+        Node aux = head;
+        Node ant = null;
+        if (head.element == element) { //primeiro elemento
+            head = head.next;
+        } else {
+            while (aux != null && aux.element != element) {
+                ant = aux;
+                aux = aux.next;
+            }
+            if (aux != null) {
+                ant.next = aux.next;
+            }
+            if (aux == tail) {
+                tail = ant;
+            }
+        }
+
     }
 
     /**
@@ -271,59 +303,33 @@ public class LinkedListOfInteger {
      * @throws IndexOutOfBoundsException se (index < 0 || index >= size())
      */
     public Integer removeByIndex(int index) {
-        if (index < 0 || index >= count) {
-            throw new IndexOutOfBoundsException();
+        if(index>0 || index >= count){
+                throw new IndexOutOfBoundsException();
         }
-
+        
         Node aux = head;
-        if (index == 0) {
-            if (tail == head) // se tiver apenas um elemento
-            {
+        if(index == 0){
+            if(tail == head){
                 tail = null;
             }
             head = head.next;
             count--;
             return aux.element;
-        } else {
-            int c = 0;
-            while (c < index - 1) {
-                aux = aux.next;
-                c++;
-            }
-            Integer element = aux.next.element;
-            if (tail == aux.next) {
-                tail = aux;
-            }
-            aux.next = aux.next.next;
-            count--;
-            return element;
         }
-    }
-
-    public boolean findNodo(Node fNodo) {
-        Node aux = fNodo.next;
-        while (aux != null) {
-            if (aux.element == fNodo.element) {
-                return true;
-            }
+        int c = 0;
+        while(c < index - 1){
             aux = aux.next;
+            c++;
         }
-        return false;
+        Integer element = aux.next.element;
+        if(tail == aux.next){
+            tail = aux;
+        } 
+        aux.next = aux.next.next;
+        count--;
+        return element;
     }
-
-    public void unique() { //5.1
-        Node aux = head;
-        Integer i = indexOf(aux.element);
-        while (aux != null) {
-            if(findNodo(aux)){
-                removeByIndex(i);
-            }
-            i++;
-           aux = aux.next;
-        }
         
-    }
-
     /**
      * Retorna o indice da primeira ocorrencia do elemento na lista, ou -1 se a
      * lista nao contem o elemento
@@ -378,3 +384,4 @@ public class LinkedListOfInteger {
     }
 
 }
+
