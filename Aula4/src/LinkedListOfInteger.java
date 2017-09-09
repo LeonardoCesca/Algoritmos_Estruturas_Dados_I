@@ -148,6 +148,30 @@ public class LinkedListOfInteger {
             head.next = prev;
         }
     }
+	
+    public boolean findNodo(Node fNodo) { //procura nodo para ex 5.
+        Node aux = fNodo.next;
+        while (aux != null) {
+            if (aux.element == fNodo.element) {
+                return true;
+            }
+            aux = aux.next;
+        }
+        return false;
+    }
+
+    public void unique() { //5
+        Node aux = head;
+        Integer i = indexOf(aux.element);
+        while (aux != null) {
+            if(findNodo(aux)){
+                removeByIndex(i);
+            }
+            i++;
+           aux = aux.next;
+        }
+        
+    }
 
     /**
      * Retorna o elemento de uma determinada posicao da lista
@@ -298,30 +322,6 @@ public class LinkedListOfInteger {
             count--;
             return element;
         }
-    }
-
-    public boolean findNodo(Node fNodo) {
-        Node aux = fNodo.next;
-        while (aux != null) {
-            if (aux.element == fNodo.element) {
-                return true;
-            }
-            aux = aux.next;
-        }
-        return false;
-    }
-
-    public void unique() { //5.1
-        Node aux = head;
-        Integer i = indexOf(aux.element);
-        while (aux != null) {
-            if(findNodo(aux)){
-                removeByIndex(i);
-            }
-            i++;
-           aux = aux.next;
-        }
-        
     }
 
     /**
