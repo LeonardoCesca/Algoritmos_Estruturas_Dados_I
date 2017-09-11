@@ -160,7 +160,7 @@ public class LinkedListOfInteger {
         return false;
     }
 
-    public void unique() { //5
+    public void unique() { //5 - remove elementos repetidos, deixando apenas uma ocorrencia de cada elemento..
         Node aux = head;
         Integer i = indexOf(aux.element);
         while (aux != null) {
@@ -173,10 +173,11 @@ public class LinkedListOfInteger {
         
     }
     
-        void buscaMenor_Remove(int element){ //busca menor elemento e remove ele. (com metodo de add ordenado or metodo ).
+        void buscaMenor_Remove(int element){ //busca menor elemento e remove ele. (com metodo de add ordenado).
         Integer chamaremove = removeByIndex(element);
                 
     }
+
         
     /**
      * Retorna o elemento de uma determinada posicao da lista
@@ -227,11 +228,11 @@ public class LinkedListOfInteger {
      * @param element o elemento a ser removido
      * @return true se a lista contem o elemento especificado
      */
-    public boolean remove(Integer element) {
+    public boolean remove(Integer element) { 
         if (element == null) {
             return false;
         }
-        if (count == 0) {
+        if (count == 0) { // verificar se a lista se encontra vazia
             return false;
         }
 
@@ -286,7 +287,7 @@ public class LinkedListOfInteger {
     /**
      * Esvazia a lista
      */
-    public void clear() {
+    public void clear() { // REMOVE TODOS OS ELEMENTOS DA LISTA
         head = null;
         tail = null;
         count = 0;
