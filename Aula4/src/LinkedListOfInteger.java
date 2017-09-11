@@ -52,7 +52,7 @@ public class LinkedListOfInteger {
      * @param element elemento a ser inserido
      * @throws IndexOutOfBoundsException se (index < 0 || index > size())
      */
-    public void add(int index, Integer element) {
+    public void add(int index, Integer element) { // add na ordem que foi adicionado .
         if (index < 0 || index > size()) {
             throw new IndexOutOfBoundsException();
         }
@@ -78,7 +78,7 @@ public class LinkedListOfInteger {
         count++;
     }
 
-    public void addIncreasingOrder(Integer element) { // 1
+    public void addIncreasingOrder(Integer element) { // 1 - Adiciona elementos na ordem (menor para o maior).
         Node ant = null;
         Node aux = head;
         Node n = new Node(element);
@@ -114,14 +114,14 @@ public class LinkedListOfInteger {
         }
     }
 
-    public void imprimeInvertido() { //2
+    public void imprimeInvertido() { //2 - imprime o conteudo da lista de trás para frente.. (NÃO RECURSIVO).
         for (int i = count - 1; i > -1; i--) {
             System.out.println(get(i));
 
         }
     }
 
-    public void imprimeInvertidoRecursivo(int i) { //3
+    public void imprimeInvertidoRecursivo(int i) { //3 - imprime o conteudo da lista de trás para frente. (RECURSIVO).
 
         if (i > 0) {
             i = i - 1;
@@ -132,11 +132,11 @@ public class LinkedListOfInteger {
         }
     }
 
-    public int qtdLista() {
+    public int qtdLista() { // retorna a quantidade de elementos da lista..
         return count;
     }
 
-    public void reverse() { // 4
+    public void reverse() { // 4 - inverte o conteudo da lista..
         if (head != null) {
             Node prev = null;
             while (head.next != null) {
@@ -172,7 +172,12 @@ public class LinkedListOfInteger {
         }
         
     }
-
+    
+        void buscaMenor_Remove(int element){ //busca menor elemento e remove ele. (com metodo de add ordenado or metodo ).
+        Integer chamaremove = removeByIndex(element);
+                
+    }
+        
     /**
      * Retorna o elemento de uma determinada posicao da lista
      *
